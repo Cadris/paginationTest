@@ -51,7 +51,7 @@
                 </thead>
                 <tbody>
                     
-                    <c:forEach items="${theUserList}" var="tempUser">
+                    <c:forEach items="${theUserList}" var="tempUser" varStatus="status">
 
                         <tr>
                             <c:url var="updateLink" value="/updateUserForm">
@@ -62,7 +62,7 @@
                                 <c:param name="userID" value="${tempUser.id}" />
                             </c:url>
 
-                            <td>${tempUser.id}</td>
+                            <td>${status.count}</td>
                             <td>${tempUser.userName}</td>
                             <td>${tempUser.password}</td>
                             <td>
