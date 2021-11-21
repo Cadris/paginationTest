@@ -50,12 +50,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/updateUserForm")
-	public String showFormForUpdate(@RequestParam("userID") int theId,
-									Model model) {
+	public String showFormForUpdate(@RequestParam("userID") int theId, Model model) {
+		
 		User user = userService.findById(theId);
-//		theModel.addAttribute("librarian", librarian);
+		
 		model.addAttribute("user",user);
 		model.addAttribute("purpose", "Modify");
+		
 		return "addUser";
 	}
 	
@@ -72,6 +73,16 @@ public class UserController {
 		
 		return "redirect:/addUserForm";
 	}
+	
+	@GetMapping("/deleteUser")
+	public String deleteUserByID(@RequestParam("userID") int theId, Model model) {
+		log("Delete User : "+theId);
+		
+		userService.deleteById(theId);
+		
+		return "redirect:/viewAllPage";
+	}
+	
 	
 	
 //	Private Methods

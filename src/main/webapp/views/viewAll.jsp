@@ -58,7 +58,7 @@
                                 <c:param name="userID" value="${tempUser.id}" />
                             </c:url>
 
-                            <c:url var="deleteLink" value="/librarian/delete">
+                            <c:url var="deleteLink" value="/deleteUser">
                                 <c:param name="userID" value="${tempUser.id}" />
                             </c:url>
 
