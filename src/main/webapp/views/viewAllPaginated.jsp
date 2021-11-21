@@ -37,7 +37,7 @@
       </nav>
 
     <div class="container bg-light">
-        <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="d-flex flex-column justify-content-center align-items-center vh-100">
 
             <table class="table table-hover">
                 <thead class="thead-dark">
@@ -77,8 +77,58 @@
                 </tbody>
             </table>
 
+            <c:if test = "${totalPages > 1}">
+              <div class="row">
+                <div class="col">
+                  <div class="p-2">
+                    Total Rows : ${totalItems}
+                  </div>
+                </div>
+                <div class="col">
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+
+                      <c:url var="previousLink" value="/page">
+                        <c:param name="pageNo" value="${currentPage-1}" />
+                      </c:url>
+
+                        <c:if test="${currentPage-1 == 0 }">
+                          <li class="page-item disabled"><a class="page-link" href="${previousLink}">Previous</a></li>
+                        </c:if>
+                        <c:if test="${currentPage-1 != 0 }">
+                          <li class="page-item"><a class="page-link" href="${previousLink}">Previous</a></li>
+                        </c:if>
+                      
+                        <c:forEach begin="1" end="${totalPages}" var="i">
+                          <li class="page-item ${currentPage == i ? 'disabled' : ''}">
+                          
+
+                            <c:url var="seqLink" value="/page">
+                                <c:param name="pageNo" value="${i}" />
+                            </c:url>
+
+                            <a class="page-link" href="${seqLink}">${i}</a>
+                          </li>
+    
+                        </c:forEach>
+                        
+                        <c:url var="nextLink" value="/page">
+                                <c:param name="pageNo" value="${currentPage+1}" />
+                            </c:url>
+
+                        <c:if test="${currentPage+1 <= totalPages}">
+                            <li class="page-item"><a class="page-link" href="${nextLink}">Next</a></li>
+                        </c:if>
+                        <c:if test="${currentPage+1 > totalPages}">
+                          <li class="page-item disabled"><a class="page-link" href="${nextLink}">Next</a></li>
+                        </c:if>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </c:if>
+
         </div>
-        
     </div>
     
     <!-- Scripts -->

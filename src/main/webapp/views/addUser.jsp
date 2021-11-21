@@ -23,7 +23,7 @@
               <a class="nav-link" href="/">Index</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/viewAllPage">View All</a>
+              <a class="nav-link" href="/viewPageinated">View All</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="/addUserForm">Add Users<span class="sr-only">(current)</span></a>

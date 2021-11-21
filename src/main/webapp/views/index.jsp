@@ -21,7 +21,7 @@
         <a class="nav-link" href="/">Index <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/viewAllPage">View All</a>
+        <a class="nav-link" href="/viewPageinated">View All</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/addUserForm">Add Users</a>
@@ -43,7 +43,7 @@
 		  <p class="lead">This Is only a mock test project</p>
 		  <hr class="my-4">
 		  <p>Works :: Add Users, Update, Delete, Paginate and Hopefully Sorting</p>
-		  <a class="btn btn-primary btn-lg" href="/viewAllPage" role="button">View All List</a>
+		  <a class="btn btn-primary btn-lg" href="/viewPageinated" role="button">View All List</a>
 		</div>
 		
 	</div>

@@ -2,6 +2,8 @@ package com.sayan.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.sayan.entities.User;
 
 public interface UserService {
@@ -11,4 +13,6 @@ public interface UserService {
 	User findById(int id);
 	
 	void deleteById(int id);
+	
+	Page<User> findPaginated(int pageNo, int pageSize);
 }
