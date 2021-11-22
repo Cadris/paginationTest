@@ -64,20 +64,28 @@ public class UserController {
 	
 	@GetMapping("/viewPageinated")
 	public String viewPaginated(Model model) {
-		return findPaginated(1, model);
+		return findPaginated(1, "userName", "asc", model);
 	}
 	
 	@GetMapping("/page")
-	public String findPaginated(@RequestParam("pageNo") int pageNo, Model model) {
+	public String findPaginated(@RequestParam("pageNo") int pageNo
+			,@RequestParam("sortField") String sortField
+			,@RequestParam("sortDirection") String sortDirection
+			,Model model) {
+		
 		int pageSize=5;
 		
-		Page<User> page = userService.findPaginated(pageNo, pageSize);
+		Page<User> page = userService.findPaginated(pageNo, pageSize, sortField, sortDirection);
 		List<User> listUser = page.getContent();
 		
 		model.addAttribute("currentPage",pageNo);
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
 		model.addAttribute("theUserList", listUser);
+		
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDirection", sortDirection);
+		model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
 		
 		return "viewAllPaginated";
 	}
@@ -102,7 +110,7 @@ public class UserController {
 		
 		userService.deleteById(theId);
 		
-		return "redirect:/viewAllPage";
+		return "redirect:/viewPageinated";
 	}
 	
 	

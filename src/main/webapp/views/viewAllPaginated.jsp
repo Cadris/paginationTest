@@ -36,6 +36,18 @@
         
       </nav>
 
+      <c:url var="userNameLink" value="/page">
+        <c:param name="pageNo" value="${currentPage}" />
+        <c:param name="sortField" value="userName" />
+        <c:param name="sortDirection" value="${reverseSortDirection}" />
+      </c:url>
+
+      <c:url var="passwordLink" value="/page">
+        <c:param name="pageNo" value="${currentPage}" />
+        <c:param name="sortField" value="password" />
+        <c:param name="sortDirection" value="${reverseSortDirection}" />
+      </c:url>
+
     <div class="container bg-light">
         <div class="d-flex flex-column justify-content-center align-items-center vh-100">
 
@@ -43,8 +55,16 @@
                 <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Username</th>
-                      <th scope="col">Password</th>
+                      <th scope="col">
+                        <a href="${userNameLink}">
+                          Username
+                        </a>
+                      </th>
+                      <th scope="col">
+                        <a href="${passwordLink}">
+                          Password
+                        </a>
+                      </th>
                       <th scope="col">Update Action</th>
                       <th scope="col">Delete Action</th>
                     </tr>
@@ -56,6 +76,7 @@
                         <tr>
                             <c:url var="updateLink" value="/updateUserForm">
                                 <c:param name="userID" value="${tempUser.id}" />
+                                
                             </c:url>
 
                             <c:url var="deleteLink" value="/deleteUser">
@@ -90,6 +111,8 @@
 
                       <c:url var="previousLink" value="/page">
                         <c:param name="pageNo" value="${currentPage-1}" />
+                        <c:param name="sortField" value="${sortField}" />
+                        <c:param name="sortDirection" value="${sortDirection}" />
                       </c:url>
 
                         <c:if test="${currentPage-1 == 0 }">
@@ -105,6 +128,8 @@
 
                             <c:url var="seqLink" value="/page">
                                 <c:param name="pageNo" value="${i}" />
+                                <c:param name="sortField" value="${sortField}" />
+                                <c:param name="sortDirection" value="${sortDirection}" />
                             </c:url>
 
                             <a class="page-link" href="${seqLink}">${i}</a>
@@ -114,6 +139,8 @@
                         
                         <c:url var="nextLink" value="/page">
                                 <c:param name="pageNo" value="${currentPage+1}" />
+                                <c:param name="sortField" value="${sortField}" />
+                                <c:param name="sortDirection" value="${sortDirection}" />
                             </c:url>
 
                         <c:if test="${currentPage+1 <= totalPages}">
