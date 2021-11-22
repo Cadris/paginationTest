@@ -17,3 +17,6 @@ This Spring Boot Project can handle Add, Update, View, Delete, Pagination and So
 - Delete
 - Boostrap
 - Pagination
+- Sorting Done
+
+# Project Done 
